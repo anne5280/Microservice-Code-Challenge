@@ -2,10 +2,7 @@ package com.example.demo;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
-/**
- * @author Ryan Baxter
- */
-@ConfigurationProperties
+@ConfigurationProperties("identity")
 public class IdentityProperties {
 
 	private String uuid;

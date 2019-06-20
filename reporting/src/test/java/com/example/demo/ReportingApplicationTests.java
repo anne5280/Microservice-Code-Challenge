@@ -13,22 +13,18 @@ import static org.junit.Assert.assertEquals;
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT, properties = {"spring.cloud.config.enabled:false"})
 @TestPropertySource(locations = {"classpath:test.properties"})
-public class GreetingApplicationTests {
+public class ReportingApplicationTests {
 
 	@Autowired
 	TestRestTemplate rest;
 
 	@Test
 	public void contextLoads() {
-		String deGreeting = this.rest.getForObject("/de", String.class);
-		String enGreeting = this.rest.getForObject("/en", String.class);
-		String esGreeting = this.rest.getForObject("/es", String.class);
-		String defaultGreeting = this.rest.getForObject("/", String.class);
-		assertEquals("Hallo", deGreeting);
-		assertEquals("Hello", enGreeting);
-		assertEquals("Hola", esGreeting);
-		assertEquals("Hello", defaultGreeting);
 
+		String dblink = this.rest.getForObject("/dblink/789101112", String.class);
+		String claim = this.rest.getForObject("/789101112", String.class);
+		assertEquals("Hallo", claim);
+		assertEquals("miniClaim", dblink);
 	}
 
 }

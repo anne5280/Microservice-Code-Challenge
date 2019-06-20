@@ -1,0 +1,6 @@
+server:
+  port: 9090
+claim:
+  dblink: miniClaim
+  claimid: 789101112
+  applied_insurance_line: personal auto
